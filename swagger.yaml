@@ -1,0 +1,38 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "NiftyBridge_AI_Assistant"
+paths:
+  /api/send:
+    post:
+      summary: "Endpoint for sending a message and receiving a response"
+      parameters:
+        - in: header
+          name: x-api-key-token
+          required: true
+          type: string
+      responses:
+        '200':
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Response"
+        '401':
+          description: "Invalid API key"
+          schema:
+            $ref: "#/definitions/Error"
+definitions:
+  Message:
+    type: object
+    properties:
+      message:
+        type: string
+  Response:
+    type: object
+    properties:
+      message:
+        type: string
+  Error:
+    type: object
+    properties:
+      detail:
+        type: string
